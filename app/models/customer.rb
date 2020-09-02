@@ -24,8 +24,7 @@ class Customer
     }
   end
   def num_reviews
-    number = self.reviews.length
-    #"#{self.full_name} has made #{number} review(s)."
+    self.reviews.length
   end
   def restaurants
     restaurants = self.reviews.collect{ |review| 
@@ -43,6 +42,24 @@ class Customer
     self.all.select{ |customer| 
     customer.given_name == name
   }
+  end
+
+  #another method I made just to experiment
+  def self.power_reviewer
+    all_reviews = Review.all.collect{ |review| 
+      review 
+    }
+    all_customers = all_reviews.collect{ |review| 
+      review.customer}
+
+    power_reviewers = all_customers.find_all{ |customer| 
+      
+      customer.num_reviews >= 3
+    }
+    power_reviewers_names = power_reviewers.collect{ |customer| 
+      customer.full_name
+    }
+    power_reviewers_names.uniq
   end
 
 end

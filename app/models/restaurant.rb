@@ -22,8 +22,7 @@ class Restaurant
   end
 
   def average_star_rating
-    average = (self.reviews.collect{|review| review.rating}).sum / self.reviews.length
-    # "#{self.name} has an average of #{average} stars."
+    (self.reviews.collect{|review| review.rating}).sum / self.reviews.length
   end
 
   #this is me trying something outside of the deliverables
